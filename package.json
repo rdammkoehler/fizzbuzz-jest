@@ -1,0 +1,16 @@
+{
+  "name": "FizzBuzz-jest",
+  "version": "1.0.0",
+  "description": "This is a demo repo for the class FizzBuzz problem. The intent is to provide an example of using TDD with Jest and JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Rich Dammkoehler (https://noradltd.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
