@@ -322,4 +322,132 @@ function fizzbuzz(given) {
 ```
     4) Now that our tests are all passing, are there any clean up steps we can do?
     5) Don't forget to commit your changes to source control.
-    6) 
+      1) `git add test/fizzbuzz.test.js src/index.js`
+      2) `git commit -m 'second test for input 2'`
+```shell
+aeon {main} - git add test/fizzbuzz.test.js src/index.js 
+aeon {main} - git commit -m 'second test for input 2'
+[main fc32720] second test for input 2
+3 files changed, 64 insertions(+), 10 deletions(-)
+```
+12) Third test, now things get more interesting. You can see our current implementation handles any input by simply converting it to a string. However, in FizzBuzz, things divisible by 3 should return Fuzz. Three (3) is divisble by 3. So lets add the simplest possible solution we can.
+    1) Start by adding another test to our `fizzbuzz.test.js` file.
+```javascript
+test('given 3, return \'Fizz\'', () => {
+    expect(fizzbuzz(3)).toBe('Fizz');
+});
+```
+    2) Running that test will show that it does not pass, we're in the RED step of TDD.
+```shell
+aeon {main} - npm test
+
+> FizzBuzz-jest@1.0.0 test /Users/rpd/projects/ConstructConnect/FizzBuzz-jest
+> jest
+
+ FAIL  test/fizzbuzz.test.js
+  ✓ given 1, return '1' (1 ms)
+  ✓ given 2, return '2'
+  ✕ given 3, return 'Fizz' (3 ms)
+
+  ● given 3, return 'Fizz'
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Fizz"
+    Received: "3"
+
+      10 |
+      11 | test('given 3, return \'Fizz\'', () => {
+    > 12 |     expect(fizzbuzz(3)).toBe('Fizz');
+         |                         ^
+      13 | });
+      14 |
+
+      at Object.<anonymous> (test/fizzbuzz.test.js:12:25)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 2 passed, 3 total
+Snapshots:   0 total
+Time:        0.278 s, estimated 1 s
+Ran all test suites.
+npm ERR! Test failed.  See above for more details.
+```
+    3) Write just enough code to make that test pass. For now, focus on just the input value of 3
+```javascript
+function fizzbuzz(given) {
+    if (given === 3) {
+        return 'Fizz';
+    }
+    return given.toString();
+}
+```
+    4) Now that all tests are passing, we are GREEN. What clean up steps can we do?
+    5) Don't forget to commit your changes to source control.
+       1) `git add test/fizzbuzz.test.js src/index.js`
+       2) `git commit -m 'third test for input 3`
+13) Test number Four. So we've made some progress and we're moving toward a solution. What is the next reasonable test? What is the next most obvious thing we could do to advance the solution toward completion? Sometimes this can be challenging, other times it's trivial.
+   Often times you just write the next test you think of. Sometimes you think of five or six tests. I write those in TODO comments and work my way through them.
+   Some pratictioners have come up with simple pneumonic devices to think through what to do next. ZOMBIES is a good one to keep in mind; what should the code do given Zero, One, Many inputs? What should it do on boundary conditions? What should the interface of the production code look like? What about Exceptions? And did we cover teh Simple scenarios?
+   In our case we will just add a test for six, the next value divisible by three. 
+   Reference: [TDD Guilded by ZOMBIES](http://blog.wingman-sw.com/tdd-guided-by-zombies)
+    1) Start by adding a test in `fizzbuzz.test.js`
+```javascript
+test('given 6, return \'Fizz\'', () => {
+    expect(fizzbuzz(6)).toBe('Fizz');
+});
+```
+    2) Running that test will show that it does not pass, we're in the RED step of TDD.
+```shell
+aeon {main} - npm test
+
+> FizzBuzz-jest@1.0.0 test /Users/rpd/projects/ConstructConnect/FizzBuzz-jest
+> jest
+
+ FAIL  test/fizzbuzz.test.js
+  ✓ given 1, return '1' (6 ms)
+  ✓ given 2, return '2'
+  ✓ given 3, return 'Fizz' (1 ms)
+  ✕ given 6, return 'Fizz' (4 ms)
+
+  ● given 6, return 'Fizz'
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "Fizz"
+    Received: "6"
+
+      14 |
+      15 | test('given 6, return \'Fizz\'', () => {
+    > 16 |     expect(fizzbuzz(6)).toBe('Fizz');
+         |                         ^
+      17 | });
+      18 |
+
+      at Object.<anonymous> (test/fizzbuzz.test.js:16:25)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 3 passed, 4 total
+Snapshots:   0 total
+Time:        0.526 s, estimated 1 s
+Ran all test suites.
+npm ERR! Test failed.  See above for more details.
+```
+
+    3) Write just enough code to make that test pass. 
+
+```javascript
+function fizzbuzz(given) {
+    if (given % 3 === 0) {
+        return 'Fizz';
+    }
+    return given.toString();
+}
+```
+    4) Now that all tests are passing, we are GREEN. What clean up steps can we do?
+    5) Don't forget to commit your changes to source control.
+       1) `git add test/fizzbuzz.test.js src/index.js`
+       2) `git commit -m 'Fourth test for input 6'`
+14) More tests. So there are many more tests you can create. We've covered, 1, 2, 3, and 6. So what's a likely next test? Probably 5, then 10, we should get 'Buzz' for those.
+    The thing to keep in mind when doing TDD is to make the steps as small as possible. Like, really small. What you want to do is build up a solution in tiny steps.
+   Tiny and small are definitely relative concepts. So for each step you can imagine, see if you can make it smaller. 
+15) 
