@@ -31,3 +31,20 @@ test('given 15, return \'FizzBuzz\'', () => {
 test('given 30, return \'FizzBuzz\'', () => {
     expect(fizzbuzz(30)).toBe('FizzBuzz');
 });
+
+describe.each(
+    [
+        [1, '1'],
+        [2, '2'],
+        [3, 'Fizz'],
+        [5, 'Buzz'],
+        [15, 'FizzBuzz'],
+        [90, 'FizzBuzz'],
+        [99, 'Fizz'],
+        [100, 'Buzz'],
+    ]
+)('given %i expect %1',(given, expected) => {
+    test(`returns ${expected}`, ()=>{
+        expect(fizzbuzz(given)).toBe(expected);
+    });
+});
