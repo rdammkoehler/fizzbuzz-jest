@@ -11,4 +11,15 @@ function fizzbuzz(given) {
     return given.toString();
 }
 
-module.exports = fizzbuzz;
+function play() {
+    for(let idx = 1; idx < 101; idx++) {
+        console.log(fizzbuzz(idx));
+    }
+}
+
+module.exports = {
+    play,
+    fizzbuzz
+};
+
+play();
