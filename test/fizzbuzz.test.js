@@ -24,4 +24,7 @@ test('given 10, return \'Buzz\'', () => {
     expect(fizzbuzz(10)).toBe('Buzz');
 });
 
+test('given 15, return \'FizzBuzz\'', () => {
+    expect(fizzbuzz(15)).toBe('FizzBuzz');
+});
 
