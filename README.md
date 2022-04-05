@@ -189,7 +189,7 @@ test('given 1, return \'1\'', () => {
     expect(fizzbuzz(1)).toBe('1');
 });
 ```
-         3) Run the test, the result should be 'red'
+    3) Run the test, the result should be 'red'
 ```shell
 aeon {main} - npm test
 
@@ -214,7 +214,7 @@ aeon {main} - npm test
 
 > Note that compiler/interpreter failures count as red.
  
-         4) Add just enough code to `index.js` and `fizzbuzz.test.js` to run the tests
+    4) Add just enough code to `index.js` and `fizzbuzz.test.js` to run the tests
 **index.js**
 ```javascript
 console.log('Hello Moto');
@@ -233,7 +233,7 @@ test('given 1, return \'1\'', () => {
     expect(fizzbuzz(1)).toBe('1');
 });
 ```
-         5) Run the test, the result should be 'green'
+    5) Run the test, the result should be 'green'
 ```shell
 aeon {main} - npm test                                                                                          
                                                                                                                 
@@ -256,15 +256,15 @@ Snapshots:   0 total
 Time:        0.415 s, estimated 1 s
 Ran all test suites.
 ```    
-         6) Now it's time to refactor. In our case, because this is our first test, there isn't anything to do really. But, we created a canary test before, so lets remove that and the `conole.log` statement as well.
-            1) remove the file `test/canary.test.js`
-            2) remove the first line of `index.js` that says `console.log('Hello Moto');`
+    6) Now it's time to refactor. In our case, because this is our first test, there isn't anything to do really. But, we created a canary test before, so lets remove that and the `conole.log` statement as well.
+        1) remove the file `test/canary.test.js`
+        2) remove the first line of `index.js` that says `console.log('Hello Moto');`
 
 > Remember to run the tests between each step
 
-         7) Now that the code is cleaned up and our tests are passing, commit the code to source control
-            1) `git add test/fizzbuzz.test.js src/index.js`
-            2) `git commit -m 'added first basic fizzbuzz test'` 
+    7) Now that the code is cleaned up and our tests are passing, commit the code to source control
+        1) `git add test/fizzbuzz.test.js src/index.js`
+        2) `git commit -m 'added first basic fizzbuzz test'` 
 ```shell
 aeon {main} - git add test/fizzbuzz.test.js src/index.js 
 aeon {main} - git commit -m 'added first basic fizzbuzz test'
@@ -273,3 +273,53 @@ aeon {main} - git commit -m 'added first basic fizzbuzz test'
  delete mode 100644 test/canary.test.js
  create mode 100644 test/fizzbuzz.test.js
 ```
+11) Our Second Test. Keeping in mind that we write only enough code to satisfy the tests we've created, our first test answers FizzBuzz for only one condition. So a reasonable next step is to test the response given an input of 2.  
+    1) Start by adding another test to our `fizzbuzz.test.js` file.
+```javascript
+test('given 2, return \'2\'', () => {
+    expect(fizzbuzz(2)).toBe('2');
+});
+```
+    2) Running that test will show that it does not pass, we're in the RED step of TDD.
+```shell
+aeon {main} - npm test
+
+> FizzBuzz-jest@1.0.0 test /Users/rpd/projects/ConstructConnect/FizzBuzz-jest
+> jest
+
+ FAIL  test/fizzbuzz.test.js
+  ✓ given 1, return '1' (2 ms)
+  ✕ given 2, return '2' (3 ms)
+
+  ● given 2, return '2'
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: "2"
+    Received: "1"
+
+       6 |
+       7 | test('given 2, return \'2\'', () => {
+    >  8 |     expect(fizzbuzz(2)).toBe('2');
+         |                         ^
+       9 | });
+      10 |
+
+      at Object.<anonymous> (test/fizzbuzz.test.js:8:25)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 passed, 2 total
+Snapshots:   0 total
+Time:        0.287 s, estimated 1 s
+Ran all test suites.
+npm ERR! Test failed.  See above for more details.
+```
+    3) Write just enough code to make that test pass
+```javascript
+function fizzbuzz(given) {
+    return given.toString()
+}
+```
+    4) Now that our tests are all passing, are there any clean up steps we can do?
+    5) Don't forget to commit your changes to source control.
+    6) 
