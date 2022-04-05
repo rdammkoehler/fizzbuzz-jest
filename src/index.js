@@ -1,5 +1,5 @@
 function fizzbuzz(given) {
-    if (given === 15) {
+    if (given % 15 === 0) {
         return 'FizzBuzz';
     }
     if (given % 3 === 0) {
