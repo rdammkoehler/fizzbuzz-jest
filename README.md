@@ -182,3 +182,86 @@ aeon {main} - git commit -m 'initialize repo withs some basics'
           2) Green - The tests pass. Once your tests are running green you can make design adjustments, clean things up, refactor as much as you like. The tests you have will ensure you don't break anything. A piece of advice, only make small changes, one at a time, and run the test between changes. If you make a mistake it's a short trip back to green, just undo the last thing you did.
           3) Refactor - Clean up the code. Refactoring is the process of improving the design of the code to ensure that it is clean and understandable. It might be simply making variable and method names more accurate, or it might be removing duplication. In any case, refactoring steps should be as small as possible and you should run the tests after each step to ensure you haven't broken a test.
     2) Looking at our problem statement, the first test might be, given an input of '1' expect to receive back '1'
+         1) add a file in the `test` folder named `fizzbuzz.test.js`
+         2) Create a test for given 1, return '1'
+```javascript
+test('given 1, return \'1\'', () => {
+    expect(fizzbuzz(1)).toBe('1');
+});
+```
+         3) Run the test, the result should be 'red'
+```shell
+aeon {main} - npm test
+
+> FizzBuzz-jest@1.0.0 test /Users/rpd/projects/ConstructConnect/FizzBuzz-jest
+> jest
+
+ FAIL  test/fizzbuzz.test.js
+  ● given 1, return '1'
+
+    ReferenceError: fizzbuzz is not defined
+
+      1 | test('given 1, return \'1\'', () => {
+    > 2 |     expect(fizzbuzz(1)).toBe('1');
+        |     ^
+      3 | });
+      4 |
+
+      at Object.<anonymous> (test/fizzbuzz.test.js:2:5)
+
+ PASS  test/canary.test.js
+```
+
+> Note that compiler/interpreter failures count as red.
+ 
+         4) Add just enough code to `index.js` and `fizzbuzz.test.js` to run the tests
+**index.js**
+```javascript
+console.log('Hello Moto');
+
+function fizzbuzz(given) {
+    return '1';
+}
+
+module.exports = fizzbuzz;
+```
+**fizzbuzz.test.js**
+```javascript
+const fizzbuzz = require('../src/index')  // this is the important new line
+
+test('given 1, return \'1\'', () => {
+    expect(fizzbuzz(1)).toBe('1');
+});
+```
+         5) Run the test, the result should be 'green'
+```shell
+aeon {main} - npm test                                                                                          
+                                                                                                                
+> FizzBuzz-jest@1.0.0 test /Users/rpd/projects/ConstructConnect/FizzBuzz-jest
+> jest                                                                                                  [10/165]
+
+ PASS  test/fizzbuzz.test.js
+  ● Console
+
+    console.log
+      Hello Moto
+
+      at Object.<anonymous> (src/index.js:1:1)                                                           [2/165]
+
+ PASS  test/canary.test.js
+
+Test Suites: 2 passed, 2 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        0.415 s, estimated 1 s
+Ran all test suites.
+```    
+         6) Now it's time to refactor. In our case, because this is our first test, there isn't anything to do really. But, we created a canary test before, so lets remove that and the `conole.log` statement as well.
+            1) remove the file `test/canary.test.js`
+            2) remove the first line of `index.js` that says `console.log('Hello Moto');`
+
+> Remember to run the tests between each step
+
+         7) Now that the code is cleaned up and our tests are passing, commit the code to source control
+            1) `git add test/fizzbuzz.test.js src/index.js`
+            2) `git commit -m 'added first basic fizzbuzz test'` 
