@@ -2,7 +2,7 @@ function fizzbuzz(given) {
     if (given % 3 === 0) {
         return 'Fizz';
     }
-    if (given === 5) {
+    if (given % 5 === 0) {
         return 'Buzz';
     }
     return given.toString();
