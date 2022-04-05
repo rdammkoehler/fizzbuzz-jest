@@ -265,3 +265,11 @@ Ran all test suites.
          7) Now that the code is cleaned up and our tests are passing, commit the code to source control
             1) `git add test/fizzbuzz.test.js src/index.js`
             2) `git commit -m 'added first basic fizzbuzz test'` 
+```shell
+aeon {main} - git add test/fizzbuzz.test.js src/index.js 
+aeon {main} - git commit -m 'added first basic fizzbuzz test'
+[main 0d5d1d9] added first basic fizzbuzz test
+ 4 files changed, 93 insertions(+), 5 deletions(-)
+ delete mode 100644 test/canary.test.js
+ create mode 100644 test/fizzbuzz.test.js
+```
