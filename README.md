@@ -163,3 +163,22 @@ Initialized empty Git repository in /Users/rpd/projects/ConstructConnect/FizzBuz
    3) `echo ".idea" >> .gitignore`
    4) `echo "node_modules/" >> .gitignore`
    5) `git add .gitignore README.md package.json package-lock.json src test`
+   6) `git commit -m 'initialize repo withs some basics'`
+```shell
+aeon {main} - git commit -m 'initialize repo withs some basics'
+[main (root-commit) 74ee65a] initialize repo withs some basics
+ 6 files changed, 3255 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 README.md
+ create mode 100644 package-lock.json
+ create mode 100644 package.json
+ create mode 100644 src/index.js
+ create mode 100644 test/canary.test.js
+```
+10) Our First Real Test
+    1) TDD - If you are not familiar with TDD, here is a quick explaination
+       1) The TDD Microcycle has three stages.
+          1) Red - The tests don't pass. This might be because the code won't compile, or because the test's assertion fails. In any case, remember 'Don't Refactor on Red'. At this point you should be looking to do whatever is needed to make your code compile, run, and pass the test.
+          2) Green - The tests pass. Once your tests are running green you can make design adjustments, clean things up, refactor as much as you like. The tests you have will ensure you don't break anything. A piece of advice, only make small changes, one at a time, and run the test between changes. If you make a mistake it's a short trip back to green, just undo the last thing you did.
+          3) Refactor - Clean up the code. Refactoring is the process of improving the design of the code to ensure that it is clean and understandable. It might be simply making variable and method names more accurate, or it might be removing duplication. In any case, refactoring steps should be as small as possible and you should run the tests after each step to ensure you haven't broken a test.
+    2) Looking at our problem statement, the first test might be, given an input of '1' expect to receive back '1'
