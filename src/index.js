@@ -1,5 +1,8 @@
 function fizzbuzz(given) {
-    return given.toString()
+    if (given % 3 === 0) {
+        return 'Fizz';
+    }
+    return given.toString();
 }
 
 module.exports = fizzbuzz;
