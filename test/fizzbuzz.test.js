@@ -15,3 +15,7 @@ test('given 3, return \'Fizz\'', () => {
 test('given 6, return \'Fizz\'', () => {
     expect(fizzbuzz(6)).toBe('Fizz');
 });
+
+test('given 5, return \'Buzz\'', () => {
+    expect(fizzbuzz(5)).toBe('Buzz');
+});
