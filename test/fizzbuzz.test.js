@@ -21,3 +21,18 @@ test('given 6 return \'Fizz\'', () => {
     expect(fizzbuzz(6)).toBe('Fizz');
 })
 
+test('given 5 return \'Buzz\'', () => {
+    expect(fizzbuzz(5)).toBe('Buzz');
+})
+
+test('given 10 return \'Buzz\'', () => {
+    expect(fizzbuzz(10)).toBe('Buzz');
+})
+
+test('given 15 return \'FizzBuzz\'', () => {
+    expect(fizzbuzz(15)).toBe('FizzBuzz');
+})
+
+test('given 30 return \'FizzBuzz\'', () => {
+    expect(fizzbuzz(30)).toBe('FizzBuzz');
+})
