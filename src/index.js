@@ -7,6 +7,15 @@ function fizzbuzz(given) {
         result += 'Buzz';
     }
     return result || given.toString();
-}
+};
 
-module.exports = fizzbuzz;
+function play() {
+    for(let idx = 1; idx < 101; idx++) {
+        console.log(fizzbuzz(idx));
+    }
+};
+
+module.exports = {
+    fizzbuzz,
+    play
+};
