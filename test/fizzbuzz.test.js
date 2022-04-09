@@ -29,3 +29,12 @@ describe('Rule 3, Divisible by 5 is \'Buzz\'', () => {
         expect(fizzbuzz(10)).toBe('Buzz');
     });
 });
+
+describe('Rule 4, Divisible by 3 and 5 is \'FizzBuzz\'', () => {
+    test('given 15, return \'FizzBuzz\'', () => {
+        expect(fizzbuzz(15)).toBe('FizzBuzz');
+    });
+    test('given 30, return \'FizzBuzz\'', () => {
+        expect(fizzbuzz(30)).toBe('FizzBuzz');
+    });
+});
