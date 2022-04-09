@@ -1,14 +1,12 @@
 function fizzbuzz(given) {
-    if ((given % 3) === 0 && (given % 5) === 0) {
-        return 'FizzBuzz';
-    }
+    let result = '';
     if ((given % 3) === 0) {
-        return 'Fizz';
+        result += 'Fizz';
     }
     if ((given % 5) === 0) {
-        return 'Buzz';
+        result += 'Buzz';
     }
-    return given.toString();
+    return result || given.toString();
 }
 
 module.exports = fizzbuzz;
